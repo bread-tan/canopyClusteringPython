@@ -3,10 +3,10 @@
 import sys
 import DataPoint
 
-file = open("dataPoints.txt","r")
-wfile = open("canopyCenters.txt","r")
-Centroids = []
-DataPoints = []
+#file = open("dataPoints.txt","r")
+#wfile = open("canopyCenters.txt","r")
+#Centroids = []
+#DataPoints = []
 
 #taking data from the std input
 
