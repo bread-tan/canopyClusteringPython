@@ -50,14 +50,17 @@ for canopyCenter in canopyCenters:
 	if len(kCentroidsList)>0:
 		canopyCenterKCentroidsDict = {canopyCenter.toString():kCentroidsList}
 
+
+print canopyCenterKCentroidsDict
+
 print("CanopyCenter\t: K Centroid")
 
 for item in canopyCenterKCentroidsDict:
 	for item2 in canopyCenterKCentroidsDict[item]:
 		print (item + "\t\t:" + item2)
 
-"""
 
+"""
 canopyCenters = []
 dataPoints = []
 
@@ -82,14 +85,11 @@ for key, value in centroids:
 	dist = int(key)
 
 
+
 	if dist < minDistance:
 		minDistance = dist
 		offset = key
 
 	print(key, )
-	
+"""	
 
-
-
-
-"""

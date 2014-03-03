@@ -19,9 +19,9 @@ class DataPoint:
 
 	def checkT2(self,center):
 		if( abs ( self.temp - center.temp) < self.T2):
-			return False
-		else:
 			return True
+		else:
+			return False
 
 	def toString(self):
 		return self.getYear() + "," + self.getTemp()
@@ -29,9 +29,9 @@ class DataPoint:
 
 	def checkT1(self,point):
 		if( abs (self.temp - point.temp) < self.T1):
-			return False
-		else:
 			return True
+		else:
+			return False
 
 	def complexDistance(self,point):
 		return math.sqrt(abs((self.year - year) * (self.year - year) + (self.temp - temp) * (self.temp - temp)))
