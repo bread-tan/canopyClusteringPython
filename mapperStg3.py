@@ -4,7 +4,7 @@ import sys
 import DataPoint
 
 
-file = open("canopyCenters.txt","r")
+rfile = open("canopyCenters.txt","r")
 
 kCentroids = []
 canopyCenters = []
@@ -14,35 +14,49 @@ canopyCenterKCentroidsDict = {}
 ### Setup for the mapper in Cluster Centroid Assignment Stage:
 
 ## Reading k-centroids (gen.py) and canopyCenters (mapperStg2.py) into lists:
-for line in file:
-	dp = DataPoint.DataPoint(line.strip())
-	canopyCenters.append(dp)
-#canopyCenters.append(dp)
-
-file.close()
-file = open("kCentroids.txt","r")
-
-for line in file:
-	dp = DataPoint.DataPoint(line.strip())
-	kCentroids.append(dp)
-kCentroids.append(dp)
-
-file.close()
 
 
+wfile = open("kCentroids.txt","r")
+
+for line in wfile:
+	kp = DataPoint.DataPoint(line.strip())
+	kCentroids.append(kp)
+
+
+for line in rfile:
+	cp = DataPoint.DataPoint(line.strip())
+	canopyCenters.append(cp)
+
+"""
+for c in canopyCenters:
+	print ("CanopyCenters:\t"+c.toString())
+
+for k in kCentroids:
+	print ("K Centroids:\t" + k.toString())
+
+"""
 ## Adding the k-centroids and canopyCenters to a dictionary:
 # outer loop canopy centers
 
 for canopyCenter in canopyCenters:
-	insert = True
+#	print ("canopyCenter:"+canopyCenter.toString())
+	kCentroidsList = []
 	for kCentroid in kCentroids:
-		insert = canopyCenter.checkT1(kCentroid)
-		if insert == False:
-			continue
-		if insert == True:
-			canopyCenterKCentroidsDict = {canopyCenter:centroids}
+#		print("kCentroid:"+kCentroid.toString())
+		if (canopyCenter.checkT1(kCentroid)):
+			kCentroidsList.append(kCentroid.toString())
+#	for center in kCentroidsList:
+#		print ("kCentroidsList:"+(center.toString()))
+	if len(kCentroidsList)>0:
+		canopyCenterKCentroidsDict = {canopyCenter.toString():kCentroidsList}
 
+print("CanopyCenter\t: K Centroid")
 
+for item in canopyCenterKCentroidsDict:
+	for item2 in canopyCenterKCentroidsDict[item]:
+		print (item + "\t\t:" + item2)
+
+"""
 
 canopyCenters = []
 dataPoints = []
@@ -77,11 +91,5 @@ for key, value in centroids:
 
 
 
-"""
-for c in canopyCenters:
-	print (c.toString())
-
-for k in kCentroids:
-	print (k.toString())
 
 """
