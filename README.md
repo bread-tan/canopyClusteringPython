@@ -21,6 +21,7 @@ To replicate running:
 -
 
 1) Run gen.py to create the DataSet in dataPoints.txt
+
 2) To get a list of Canopy Centers pipe the files of Stage 1. 
 + + "cat dataPoints.txt | ./mapperStg1.py | sort | ./reducerStg1.py"
 + + + Output will be a list of Canopy Centers stored in canopyCenters.txt
