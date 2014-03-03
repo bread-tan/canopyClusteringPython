@@ -12,7 +12,7 @@ for i in range(100000):
 		year = "19" + str(year)
 	temp = random.randint(5, 60)
 	file.write(year + "," + str(temp)+"\n")
-file.write(year + "," + str(temp)+"\n")
+#file.write(year + "," + str(temp)+"\n")
 file.close()
 
 
@@ -27,5 +27,5 @@ for i in range(3):
 		year = "19" + str(year)
 	temp = random.randint(5, 60)
 	file.write(year + "," + str(temp)+"\n")
-file.write(year + "," + str(temp)+"\n")
+#file.write(year + "," + str(temp)+"\n")
 file.close()

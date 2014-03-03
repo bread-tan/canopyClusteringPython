@@ -39,16 +39,14 @@ for k in kCentroids:
 # outer loop canopy centers
 
 for canopyCenter in canopyCenters:
-#	print ("canopyCenter:"+canopyCenter.toString())
 	kCentroidsList = []
 	for kCentroid in kCentroids:
-#		print("kCentroid:"+kCentroid.toString())
 		if (canopyCenter.checkT1(kCentroid)):
-			kCentroidsList.append(kCentroid.toString())
-#	for center in kCentroidsList:
-#		print ("kCentroidsList:"+(center.toString()))
+			#kCentroidsList.append(kCentroid.toString())
+			kCentroidsList.append(kCentroid)
 	if len(kCentroidsList)>0:
-		canopyCenterKCentroidsDict = {canopyCenter.toString():kCentroidsList}
+		#canopyCenterKCentroidsDict = {canopyCenter.toString():kCentroidsList}
+		canopyCenterKCentroidsDict[canopyCenter] = kCentroidsList
 
 
 print canopyCenterKCentroidsDict
@@ -57,7 +55,7 @@ print("CanopyCenter\t: K Centroid")
 
 for item in canopyCenterKCentroidsDict:
 	for item2 in canopyCenterKCentroidsDict[item]:
-		print (item + "\t\t:" + item2)
+		print (item.toString() + "\t\t:" + item2.toString())
 
 
 """
