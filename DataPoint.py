@@ -35,11 +35,3 @@ class DataPoint:
 
 	def complexDistance(self,point):
 		return math.sqrt(abs((self.year - year) * (self.year - year) + (self.temp - temp) * (self.temp - temp)))
-		
-class Centroid:
-
-	def __init__(self,inputLine):
-		(self.year , self.temp) = inputLine.split(",")
-		self.temp = int(self.temp)
-
-	
