@@ -13,7 +13,7 @@ class DataPoint:
 	def set0(self):
 		self.tempSum = 0
 		self.yearSum = 0
-		self.count = 0
+		self.count = 1
 
 
 	def __init__(self,inputLine):

@@ -31,19 +31,21 @@ for line in sys.stdin:
 	else:	
 		avgYear = yearSum / count
 		avgTemp = tempSum / count
-		print ("1\t"+str(avgYear)+","+str(avgTemp)+"\t"+prevKey.toString())
+		print ("1\t"+str(avgYear)+","+str(avgTemp))
+		"""
 		print("Year Sum: " + str(yearSum) + "\t\tAvg Year: " + str(avgYear))
 		print("Temp Sum: " +str(tempSum) + "\t\tAvg Temp: " + str(avgTemp))
 		print("Count: " + str(count))
-		print("K Centroid:" + kCentroid.toString()+"\n")
+		print("K Centroid:" + kCentroid.toString()+"\n")"""
 		count = 1
 		yearSum = dataPoints.year
 		tempSum = dataPoints.temp
 		prevKey = kCentroid
 		
 		
-print ("1\t"+str(avgYear)+","+str(avgTemp)+"\t"+prevKey.toString())
+print ("1\t"+str(avgYear)+","+str(avgTemp))
+"""
 print("Year Sum: " + str(yearSum) + "\t\tAvg Year: " + str(avgYear))
 print("Temp Sum: " +str(tempSum) + "\t\tAvg Temp: " + str(avgTemp))
 print("Count: " + str(count))
-print("K Centroid:" + kCentroid.toString()+"\n")
+print("K Centroid:" + kCentroid.toString()+"\n")"""

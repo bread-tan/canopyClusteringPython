@@ -18,7 +18,7 @@ file.close()
 file = open("kCentroids.txt","w+")
 
 #write k centroids to a file
-for i in range(3):
+for i in range(5):
 	year = random.randint(0, 99)
 	if year < 10:
 		year = "190" + str(year)
