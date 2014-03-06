@@ -26,24 +26,24 @@ for line in sys.stdin:
 		yearSum = yearSum + dataPoints.year
 		tempSum = tempSum + dataPoints.temp
 		count = count + 1
-		continue
-		#print (str(yearSum)+ "\t" + str(tempSum) + "\t" + str(count))
-
-	
-	if prevKey != kCentroid:
+		#if(kCentroid.temp == 19):
+		#	print (str(yearSum)+ "\t" + str(tempSum) + "\t" + str(count) + " " + kCentroid.toString())
+	else:	
 		avgYear = yearSum / count
 		avgTemp = tempSum / count
-		print ("1\t"+str(avgYear)+","+str(avgTemp)+"\t"+kCentroid.toString())
-		count = 1
-		yearSum = dataPoints.year
-		tempSum = dataPoints.temp
-		prevKey = kCentroid
-		continue
-		
-"""
+		print ("1\t"+str(avgYear)+","+str(avgTemp)+"\t"+prevKey.toString())
 		print("Year Sum: " + str(yearSum) + "\t\tAvg Year: " + str(avgYear))
 		print("Temp Sum: " +str(tempSum) + "\t\tAvg Temp: " + str(avgTemp))
 		print("Count: " + str(count))
 		print("K Centroid:" + kCentroid.toString()+"\n")
-
-"""
+		count = 1
+		yearSum = dataPoints.year
+		tempSum = dataPoints.temp
+		prevKey = kCentroid
+		
+		
+print ("1\t"+str(avgYear)+","+str(avgTemp)+"\t"+prevKey.toString())
+print("Year Sum: " + str(yearSum) + "\t\tAvg Year: " + str(avgYear))
+print("Temp Sum: " +str(tempSum) + "\t\tAvg Temp: " + str(avgTemp))
+print("Count: " + str(count))
+print("K Centroid:" + kCentroid.toString()+"\n")
