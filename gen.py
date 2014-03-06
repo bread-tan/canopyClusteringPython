@@ -4,7 +4,7 @@ import random
 file = open("dataPoints.txt","w+")
 
 #write data points to a file
-for i in range(100000):
+for i in range(5000):
 	year = random.randint(0, 99)
 	if year < 10:
 		year = "190" + str(year)

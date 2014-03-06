@@ -38,10 +38,5 @@ for line in sys.stdin:
 	insert = True
 #	for dataPoint in DataPoints: 
  	for canopyCenter in canopyCenters:	
- 		insert = dp.checkT1(canopyCenter)
- 		if insert == False:
- 				#break
- 				continue
- 		if insert == True:
- 			print(canopyCenter.toString() + "\t" + dp.toString())	
-# 		print(centroid.toString() + "\t" + dataPoint.toString())
+ 		if dp.checkT1(canopyCenter):
+ 			print(canopyCenter.toString() + "\t" + dp.toString())

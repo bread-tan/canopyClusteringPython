@@ -9,13 +9,21 @@ class DataPoint:
 
 	def __init__(self,inputLine):
 		(self.year , self.temp) = inputLine.split(",")
+		self.year = int(self.year)
 		self.temp = int(self.temp)
+
+
+	def __hash__(self):
+		return hash((self.year, self.temp))
+
+	def __eq__(self, other):
+		return (self.year, self.temp) == (other.year, other.temp)
 
 	def getTemp(self):
 		return str(self.temp)
 
 	def getYear(self):
-		return self.year
+		return str(self.year)
 
 	def checkT2(self,center):
 		if( abs ( self.temp - center.temp) < self.T2):
@@ -34,4 +42,4 @@ class DataPoint:
 			return False
 
 	def complexDistance(self,point):
-		return math.sqrt(abs((self.year - year) * (self.year - year) + (self.temp - temp) * (self.temp - temp)))
+		return math.sqrt(abs((self.year - point.year) * (self.year - point.year) + (self.temp - point.temp) * (self.temp - point.temp)))
