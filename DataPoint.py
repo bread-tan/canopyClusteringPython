@@ -6,6 +6,15 @@ import math
 class DataPoint:
 	T2 = 5
 	T1 = 10
+	tempSum = 0
+	yearSum = 0
+	count = 0 
+
+	def set0(self):
+		self.tempSum = 0
+		self.yearSum = 0
+		self.count = 0
+
 
 	def __init__(self,inputLine):
 		(self.year , self.temp) = inputLine.split(",")
@@ -43,3 +52,17 @@ class DataPoint:
 
 	def complexDistance(self,point):
 		return math.sqrt(abs((self.year - point.year) * (self.year - point.year) + (self.temp - point.temp) * (self.temp - point.temp)))
+
+	def add(self, point):
+		self.temp = self.temp + point.temp
+		self.year = self.year + point.year
+		return self
+
+	def avg(self,count):
+		if count is 0:
+			print ("Error: DivideByZero")
+			return		
+		tempAvg = str(int(self.temp/count))
+		yearAvg = str(int(self.year/count))
+		print("1\t" + yearAvg + "," + tempAvg)
+		return

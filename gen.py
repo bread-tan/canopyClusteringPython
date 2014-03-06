@@ -12,7 +12,6 @@ for i in range(5000):
 		year = "19" + str(year)
 	temp = random.randint(5, 60)
 	file.write(year + "," + str(temp)+"\n")
-#file.write(year + "," + str(temp)+"\n")
 file.close()
 
 
@@ -26,6 +25,5 @@ for i in range(3):
 	else:
 		year = "19" + str(year)
 	temp = random.randint(5, 60)
-	file.write(year + "," + str(temp)+"\n")
-#file.write(year + "," + str(temp)+"\n")
+	file.write("1\t"+year + "," + str(temp)+"\n")
 file.close()

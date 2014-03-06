@@ -6,6 +6,8 @@ from DataPoint import DataPoint
 
 
 rfile = open("canopyCenters.txt","r")
+wfile = open("kCentroids.txt","r")
+
 
 kCentroids = []
 canopyCenters = []
@@ -17,10 +19,10 @@ canopyCenterKCentroidsDict = {}
 ## Reading k-centroids (gen.py) and canopyCenters (mapperStg2.py) into lists:
 
 
-wfile = open("kCentroids.txt","r")
 
 for line in wfile:
-	kp = DataPoint(line.strip())
+	(key,value) = line.split("\t")
+	kp = DataPoint(value.strip())
 	kCentroids.append(kp)
 
 
