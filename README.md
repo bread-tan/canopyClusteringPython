@@ -1,7 +1,7 @@
-Canopy Clustering using MapReduce in Hadoop
+# Canopy Clustering using MapReduce in Hadoop
 =
 
-Files Included:
+## Files Included:
 -
 <ul>
 	<li><b>Gen.py</b></li>
@@ -11,13 +11,13 @@ Files Included:
 			<li>reducerStg1.py</li>
 		</ul>
 	</li>
-	<li><b>Stage 2: Canopy Assign<b>
+	<li><b>Stage 2: Canopy Assign</b>
 		<ul>
 			<li>mapperStg2.py</li>
 			<li>reducerStg2.py</li>
 		</ul>
 	</li>
-	<li><b>Stage 3: Cluster Center<b>
+	<li><b>Stage 3: Cluster Center</b>
 		<ul>
 			<li>mapperStg3.py</li>
 			<li>reducerStg3.py</li>
@@ -32,23 +32,23 @@ Files Included:
 </ul>
 
 
-#Functions of each of the files will be updated at a later date.#
+*Functions of each of the files will be updated at a later date.
 
 
-Description of the files:
+## Description of the files:
 =
 
-Gen.py
+### Gen.py
 -
 -> Generates the Data Set on which we use Canopy-Clustering.
 -> Generates a set of k-Centroids.
 
-DataPoint.py
+### DataPoint.py
 -
 -> DataPoint class.
 
-Stage 1: Canopy Center
--
+### Stage 1: Canopy Center
+
 <ul>
 	<li>Mapper:</li>
 		<ul>
@@ -64,7 +64,7 @@ Stage 1: Canopy Center
 		</ul>
 </ul>
 
-Stage 2: Canopy Assign
+### Stage 2: Canopy Assign
 -
 <ul>
 	<li>Mapper:</li>
@@ -81,7 +81,7 @@ Stage 2: Canopy Assign
 		</ul>
 </ul>
 
-Stage 3: Cluster Center
+### Stage 3: Cluster Center
 -
 <ul>
 	<li>Mapper:</li>
@@ -101,7 +101,7 @@ Stage 3: Cluster Center
 		</ul>
 </ul>
 
-Stage 4: Cluster Assign
+### Stage 4: Cluster Assign
 -
 <ul>
 	<li>Mapper:</li>
@@ -121,10 +121,20 @@ Stage 4: Cluster Assign
 
 
 To replicate running:
--
-
-Edit the run.sh shell script to run.
+> Edit the run.sh shell script to run.
 
 Note: 
-+ If running on windows cmd, you have to create your own Sort function to sort input from the mapper. 
-+ Personally, I'd recommend just using a linux OS to smoothen it all out.
+> If running on windows cmd, you have to create your own Sort function to sort input from the mapper. 
+> Personally, I'd recommend just using a linux OS to smoothen it all out.
+
+
+
+## Project Members (Alphabetically):
+-
+* [Archit Shukla](https://github.com/architshukla)
+* [Raj Kiran](https://github.com/superman550)
+* [Sheraaz Jason](https://github.com/sheraaz-jason)
+
+
+## Website:
+[Canopy Clustering in Python using Hadoop (Map Reduce)](http://sheraaz-jason.github.io/canopyClusteringPython/)
