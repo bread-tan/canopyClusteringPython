@@ -2,16 +2,6 @@
 <html>
 
   <head>
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-48565082-1', 'github.com');
-  ga('send', 'pageview');
-
-  </script
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="chrome=1" />
     <meta name="description" content="Canopy Clustering using MapReduce [Hadoop (streaming) : Canopy Clustering using MapReduce [Hadoop]" />
@@ -44,43 +34,162 @@
         <h1>
 <a name="canopy-clustering-using-mapreduce-in-hadoop" class="anchor" href="#canopy-clustering-using-mapreduce-in-hadoop"><span class="octicon octicon-link"></span></a>Canopy Clustering using MapReduce in Hadoop</h1>
 
+<h1></h1>
+
 <h2>
 <a name="files-included" class="anchor" href="#files-included"><span class="octicon octicon-link"></span></a>Files Included:</h2>
 
+<h2></h2>
+
 <ul>
 <li><b>Gen.py</b></li>
-<li><b>Stage 1:<b>
-<ul>
-<li>MapperStg1.py</li> 
-<li>ReducerStg1.py</li>
-</ul>
-<li><b>Stage 2:
-<ul>
-<li>MapperStg2.py</li>
-<li>ReducerStg2.py</li>
-</ul></b></li></b></b></li>
-</ul><p>Functions of each of the files will be updated at a later date.</p>
+    <li><b>Stage 1: Canopy Center<b>
+        <ul>
+<li>mapperStg1.py</li> 
+            <li>reducerStg1.py</li>
+        </ul></b></b></li>
+    <li>
+<b>Stage 2: Canopy Assign</b>
+        <ul>
+<li>mapperStg2.py</li>
+            <li>reducerStg2.py</li>
+        </ul>
+</li>
+    <li>
+<b>Stage 3: Cluster Center</b>
+        <ul>
+<li>mapperStg3.py</li>
+            <li>reducerStg3.py</li>
+        </ul>
+</li>
+    <li>
+<b>Stage 4: Cluster Assign:</b>
+        <ul>
+<li>mapperStg4.py</li>
+            <li>reducerStg4.py</li>
+        </ul>
+</li>
+</ul><p>*Functions of each of the files will be updated at a later date.</p>
 
 <h2>
-<a name="to-replicate-running" class="anchor" href="#to-replicate-running"><span class="octicon octicon-link"></span></a>To replicate running:</h2>
+<a name="description-of-the-files" class="anchor" href="#description-of-the-files"><span class="octicon octicon-link"></span></a>Description of the files:</h2>
 
-<p>1) Run gen.py to create the DataSet in dataPoints.txt
-2) To get a list of Canopy Centers pipe the files of Stage 1. </p>
+<h1></h1>
+
+<h3>
+<a name="genpy" class="anchor" href="#genpy"><span class="octicon octicon-link"></span></a>Gen.py</h3>
+
+<h2></h2>
+
+<p>-&gt; Generates the Data Set on which we use Canopy-Clustering.
+-&gt; Generates a set of k-Centroids.</p>
+
+<h3>
+<a name="datapointpy" class="anchor" href="#datapointpy"><span class="octicon octicon-link"></span></a>DataPoint.py</h3>
+
+<h2></h2>
+
+<p>-&gt; DataPoint class.</p>
+
+<h3>
+<a name="stage-1-canopy-center" class="anchor" href="#stage-1-canopy-center"><span class="octicon octicon-link"></span></a>Stage 1: Canopy Center</h3>
 
 <ul>
-<li>+ "cat dataPoints.txt | ./mapperStg1.py | sort | ./reducerStg1.py"</li>
-<li>+ + Output will be a list of Canopy Centers stored in canopyCenters.txt</li>
-<li>+ + + Output will be in the format "1\tDataPoint"</li>
-</ul><p>3) Pipe that to Stage 2 to assign each data point to a Canopy Center.</p>
+<li>Mapper:</li>
+        <ul>
+<li>Input: Data points.</li>
+            <li>Output: List of Canopy Centers.</li>
+            <li>Function: </li>
+        </ul>
+<li>Reducer:</li>
+        <ul>
+<li>Input: Canopy Centers</li>
+            <li>Output: Canopy Centers</li>
+            <li>Function: </li>
+        </ul>
+</ul><h3>
+<a name="stage-2-canopy-assign" class="anchor" href="#stage-2-canopy-assign"><span class="octicon octicon-link"></span></a>Stage 2: Canopy Assign</h3>
+
+<h2></h2>
 
 <ul>
-<li>+ Output will be in the format "CanopyCenter\tDataPoint"</li>
-</ul><p>Note: </p>
+<li>Mapper:</li>
+        <ul>
+<li>Input: Canopy Centers </li>
+            <li>Output: Canopy Centers and the Data Points that belong to each.</li>
+            <li>Function: </li>
+        </ul>
+<li>Reducer:</li>
+        <ul>
+<li>Input: Canopy Centers, Data Points (stdin)</li>
+            <li>Output: Identity </li>
+            <li>Function: Echos the result from the Mapper.</li>
+        </ul>
+</ul><h3>
+<a name="stage-3-cluster-center" class="anchor" href="#stage-3-cluster-center"><span class="octicon octicon-link"></span></a>Stage 3: Cluster Center</h3>
+
+<h2></h2>
 
 <ul>
-<li>If running on windows cmd, you have to create your own Sort function to sort input from the mapper. </li>
-<li>Personally, I'd recommend just using a linux OS to smoothen it all out.</li>
-</ul>
+<li>Mapper:</li>
+        <ul>
+<li>Input: </li>
+                <ul>-&gt; List of 'k' Centroids</ul>
+<ul>-&gt; List of Canopy Centers</ul>
+<ul>-&gt; Canopy Centers, Data Points (stdin)</ul>
+<li>Output: K Centroids and the Data Points that belong to each. </li>
+            <li>Function: </li>
+        </ul>
+<li>Reducer:</li>
+        <ul>
+<li>Input: </li>
+            <li>Output: </li>
+            <li>Function: </li>
+        </ul>
+</ul><h3>
+<a name="stage-4-cluster-assign" class="anchor" href="#stage-4-cluster-assign"><span class="octicon octicon-link"></span></a>Stage 4: Cluster Assign</h3>
+
+<h2></h2>
+
+<ul>
+<li>Mapper:</li>
+        <ul>
+<li>Input: </li>
+            <li>Output: </li>
+            <li>Function: </li>
+        </ul>
+<li>Reducer:</li>
+        <ul>
+<li>Input: </li>
+            <li>Output: </li>
+            <li>Function: </li>
+        </ul>
+</ul><p>To replicate running:</p>
+
+<blockquote>
+<p>Edit the run.sh shell script to run.</p>
+</blockquote>
+
+<p>Note: </p>
+
+<blockquote>
+<p>If running on windows cmd, you have to create your own Sort function to sort input from the mapper. 
+Personally, I'd recommend just using a linux OS to smoothen it all out.</p>
+</blockquote>
+
+<h2>
+<a name="project-members-alphabetically" class="anchor" href="#project-members-alphabetically"><span class="octicon octicon-link"></span></a>Project Members (Alphabetically):</h2>
+
+<h2></h2>
+
+<ul>
+<li><a href="https://github.com/architshukla">Archit Shukla</a></li>
+<li><a href="https://github.com/superman550">Raj Kiran</a></li>
+<li><a href="https://github.com/sheraaz-jason">Sheraaz Jason</a></li>
+</ul><h2>
+<a name="website" class="anchor" href="#website"><span class="octicon octicon-link"></span></a>Website:</h2>
+
+<p><a href="http://sheraaz-jason.github.io/canopyClusteringPython/">Canopy Clustering in Python using Hadoop (Map Reduce)</a></p>
       </section>
     </div>
 
