@@ -26,7 +26,6 @@ for line in sys.stdin:
 	kC = DataPoint(value.strip())
 	kCentroids.append(dp)
 
-print type(kCentroids)
 
 
 for dataPoint in dataPoints:
@@ -36,5 +35,5 @@ for dataPoint in dataPoints:
 		distance = dataPoint.complexDistance(kCentroid)
 		if distance < minDistance:
 			minDistance = distance
-			pos = pos + 1
+			pos = 1
 	print(kCentroids[pos].toString()+"\t"+dataPoint.toString())
