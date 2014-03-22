@@ -2,6 +2,7 @@
 
 import sys
 from DataPoint import DataPoint
+wfile = open("map3.txt","w+")
 
 prevKey = None
 count = 0
@@ -11,6 +12,7 @@ avgYear = 0
 avgTemp = 0
 
 for line in sys.stdin:
+	wfile.write(line)
 	(key , value) = line.split("\t")
 	kCentroid = DataPoint(key.strip())
 	dataPoints = DataPoint(value.strip())

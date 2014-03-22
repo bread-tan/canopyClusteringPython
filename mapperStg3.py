@@ -10,6 +10,7 @@ if len(sys.argv) < 3:
 
 canopyCentersFile= open(sys.argv[1],"r")
 kCentroidsFile  = open(sys.argv[2],"r")
+wfile = open("mapkCentroids.txt","w+")
 
 
 kCentroids = []
@@ -30,11 +31,13 @@ for line in kCentroidsFile:
 	else:
 		kp = DataPoint(line.strip())
 	kCentroids.append(kp)
+kCentroids.append(kp) #1
 
 
 for line in canopyCentersFile:
 	cp = DataPoint(line.strip().split("\t")[1])
 	canopyCenters.append(cp)
+canopyCenters.append(cp) #1
 
 """
 for c in canopyCenters:
@@ -96,3 +99,5 @@ for line in sys.stdin:
 				minDistance = currentDistance
 				pos = 1	
 		print (kCentroidsList[pos].toString() + "\t" + dataPoint.toString())
+
+
