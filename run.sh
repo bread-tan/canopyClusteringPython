@@ -16,7 +16,6 @@ step3()
 # Stage 1
 cat dataPoints.txt | ./mapperStg1.py | sort | ./reducerStg1.py > canopyCenters.txt
 
-<<<<<<< HEAD
 # Stage 2
 cat dataPoints.txt | ./mapperStg2.py | sort | ./reducerStg2.py > canopyAssign.txt
 
@@ -30,7 +29,3 @@ cp kCentroids_$COUNTER.txt kCentroidsFinal.txt
 
 # Stage 4
 cat dataPoints.txt | ./mapperStg4.py kCentroidsFinal.txt | sort | ./reducerStg4.py > outputz
-=======
-# Stage 2 & 3
-cat dataPoints.txt | ./mapperStg2.py | sort | ./reducerStg2.py | ./mapperStg3.py | sort | ./reducerStg3.py | ./mapperStg4.py | sort | ./reducerStg4.py
->>>>>>> 0cf318381d9aaea89a578add4bf8ae06844859a0
