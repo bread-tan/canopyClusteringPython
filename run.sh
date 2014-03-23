@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 rm kCentroids_*
+rm fedtored*
 rm canopyCenters.txt
 rm canopyAssign.txt
 

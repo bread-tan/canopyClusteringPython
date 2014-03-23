@@ -10,7 +10,6 @@ if len(sys.argv) < 3:
 
 canopyCentersFile= open(sys.argv[1],"r")
 kCentroidsFile  = open(sys.argv[2],"r")
-wfile = open("mapkCentroids.txt","w+")
 
 
 kCentroids = []
@@ -37,14 +36,8 @@ for line in canopyCentersFile:
 	cp = DataPoint(line.strip().split("\t")[1])
 	canopyCenters.append(cp)
 
-"""
-for c in canopyCenters:
-	print ("CanopyCenters:\t"+c.toString())
 
-for k in kCentroids:
-	print ("K Centroids:\t" + k.toString())
 
-"""
 ## Adding the k-centroids and canopyCenters to a dictionary:
 # outer loop canopy centers
 
