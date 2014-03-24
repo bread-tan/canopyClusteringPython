@@ -7,11 +7,18 @@ rm canopyAssign.txt
 
 COUNTER=0
 
-step3()
-{
+
+#step3(){
+#	COUNTER=`expr $COUNTER + 1`
+#	cat canopyAssign.txt | ./mapperStg3.py canopyCenters.txt $1 | sort > fedtored$COUNTER.txt
+#	cat fedtored$COUNTER.txt | ./reducerStg3.py > kCentroids_$COUNTER.txt
+#	./test.py $1 kCentroids_$COUNTER.txt
+#}
+
+
+step3(){
 	COUNTER=`expr $COUNTER + 1`
-	cat canopyAssign.txt | ./mapperStg3.py canopyCenters.txt $1 | sort > fedtored$COUNTER.txt
-	cat fedtored$COUNTER.txt | ./reducerStg3.py > kCentroids_$COUNTER.txt
+	cat canopyAssign.txt | ./mapperStg3.py canopyCenters.txt $1 | sort | ./reducerStg3.py > kCentroids_$COUNTER.txt
 	./test.py $1 kCentroids_$COUNTER.txt
 }
 
@@ -31,3 +38,14 @@ cp kCentroids_$COUNTER.txt kCentroidsFinal.txt
 
 # Stage 4
 cat dataPoints.txt | ./mapperStg4.py kCentroidsFinal.txt | sort | ./reducerStg4.py > outputz
+
+
+#Print Stage
+
+wc kCentroids.txt -l
+cat kCentroids.txt 
+wc kCentroidsFinal.txt -l
+cat kCentroidsFinal.txt
+echo "Output"
+cat outputz
+cat add.txt

@@ -4,7 +4,7 @@ import random
 file = open("dataPoints.txt","w+")
 
 #write data points to a file
-for i in range(10):
+for i in range(20):
 	year = random.randint(0, 99)
 	if year < 10:
 		year = "190" + str(year)
@@ -18,7 +18,7 @@ file.close()
 file = open("kCentroids.txt","w+")
 
 #write k centroids to a file
-for i in range(4):
+for i in range(6):
 	year = random.randint(0, 99)
 	if year < 10:
 		year = "190" + str(year)
