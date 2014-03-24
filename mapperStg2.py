@@ -3,8 +3,11 @@
 import sys
 import DataPoint
 
-#file = open("dataPoints.txt","r")
-canopyCentersFile = open("canopyCenters.txt","r")
+if len(sys.argv) < 2:
+	print("ERROR: Insufficient arguments")
+	sys.exit(-1)
+
+canopyCentersFile = open(sys.argv[1],"r")
 canopyCenters = []
 canopys = []
 #DataPoints = []

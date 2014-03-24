@@ -3,7 +3,7 @@
 import sys
 from DataPoint import DataPoint
 
-print "Start"
+#print "Start"
 
 # read sys.argv[1] and sys.argv[2]
 # put em in lists
@@ -34,12 +34,12 @@ for line in newCentroidsFile:
 # compare every element with coressponding element in the other list using complex distance of the data points.
 
 for i in range(len(oldCentroids)):
-	print("Distance between " + oldCentroids[i].toString() 
-		+ " and " + newCentroids[i].toString() + " : " + str(oldCentroids[i].complexDistance(newCentroids[i])))
+	#print("Distance between " + oldCentroids[i].toString() 
+	#	+ " and " + newCentroids[i].toString() + " : " + str(oldCentroids[i].complexDistance(newCentroids[i])))
 	if (oldCentroids[i].complexDistance(newCentroids[i])) > DataPoint.THRESHOLD:
-		print "Gonna return 0"
+		#print "Gonna return 0"
 		sys.exit(0)
 # if all of the distances ar ewithin the threshold, return 1 or else 0
 
-print "I'm done"
+#print "I'm done"
 sys.exit(1)

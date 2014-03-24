@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
 import sys
-import DataPoint
+from DataPoint import DataPoint
 
 canopyCenters = []
 
 #taking data from the std input
 
 for line in sys.stdin:
-	dp = DataPoint.DataPoint(line.strip())
+	dp = DataPoint(line.strip())
 
 	if len(canopyCenters) == False:
 		canopyCenters.append(dp)

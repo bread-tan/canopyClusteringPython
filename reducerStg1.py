@@ -1,13 +1,13 @@
 #! /usr/bin/env python
 
 import sys
-import DataPoint
+from DataPoint import DataPoint
 
 canopyCenters = []
 
 for line in sys.stdin:
 	(kev,value) = line.split("\t")
-	dp = DataPoint.DataPoint(value.strip())
+	dp = DataPoint(value.strip())
 
 	if len(canopyCenters) == 0:
 		canopyCenters.append(dp)
