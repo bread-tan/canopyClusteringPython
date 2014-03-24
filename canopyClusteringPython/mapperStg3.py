@@ -36,14 +36,8 @@ for line in canopyCentersFile:
 	cp = DataPoint(line.strip().split("\t")[1])
 	canopyCenters.append(cp)
 
-"""
-for c in canopyCenters:
-	print ("CanopyCenters:\t"+c.toString())
 
-for k in kCentroids:
-	print ("K Centroids:\t" + k.toString())
 
-"""
 ## Adding the k-centroids and canopyCenters to a dictionary:
 # outer loop canopy centers
 
@@ -56,18 +50,6 @@ for canopyCenter in canopyCenters:
 	if len(kCentroidsList)>0:
 		#canopyCenterKCentroidsDict = {canopyCenter.toString():kCentroidsList}
 		canopyCenterKCentroidsDict[canopyCenter] = kCentroidsList
-# print(isinstance(canopyCenters[0], collections.Hashable))
-# print canopyCenterKCentroidsDict[]
-
-
-# print canopyCenterKCentroidsDict
-
-"""print("CanopyCenter\t: K Centroid")
-
-for item in canopyCenterKCentroidsDict:
-	for item2 in canopyCenterKCentroidsDict[item]:
-		print (item.toString() + " : " + item2.toString())
-"""
 
 
 for line in sys.stdin:
@@ -94,5 +76,5 @@ for line in sys.stdin:
 		#	print("currentDistance : " + str(currentDistance) + "\tkCentroidsList[i]" + kCentroidsList[i].toString())
 			if currentDistance < minDistance:
 				minDistance = currentDistance
-				pos = 1	
+				pos = i
 		print (kCentroidsList[pos].toString() + "\t" + dataPoint.toString())

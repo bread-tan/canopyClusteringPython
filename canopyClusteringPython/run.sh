@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 rm kCentroids_*
+rm fedtored*
 rm canopyCenters.txt
 rm canopyAssign.txt
 
@@ -9,7 +10,8 @@ COUNTER=0
 step3()
 {
 	COUNTER=`expr $COUNTER + 1`
-	cat canopyAssign.txt | ./mapperStg3.py canopyCenters.txt $1 | sort | ./reducerStg3.py > kCentroids_$COUNTER.txt
+	cat canopyAssign.txt | ./mapperStg3.py canopyCenters.txt $1 | sort > fedtored$COUNTER.txt
+	cat fedtored$COUNTER.txt | ./reducerStg3.py > kCentroids_$COUNTER.txt
 	./test.py $1 kCentroids_$COUNTER.txt
 }
 

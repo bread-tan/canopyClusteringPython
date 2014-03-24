@@ -50,18 +50,6 @@ for canopyCenter in canopyCenters:
 	if len(kCentroidsList)>0:
 		#canopyCenterKCentroidsDict = {canopyCenter.toString():kCentroidsList}
 		canopyCenterKCentroidsDict[canopyCenter] = kCentroidsList
-# print(isinstance(canopyCenters[0], collections.Hashable))
-# print canopyCenterKCentroidsDict[]
-
-
-# print canopyCenterKCentroidsDict
-
-"""print("CanopyCenter\t: K Centroid")
-
-for item in canopyCenterKCentroidsDict:
-	for item2 in canopyCenterKCentroidsDict[item]:
-		print (item.toString() + " : " + item2.toString())
-"""
 
 
 for line in sys.stdin:
@@ -90,5 +78,3 @@ for line in sys.stdin:
 				minDistance = currentDistance
 				pos = i
 		print (kCentroidsList[pos].toString() + "\t" + dataPoint.toString())
-
-

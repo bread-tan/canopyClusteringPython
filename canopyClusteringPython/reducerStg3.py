@@ -2,6 +2,7 @@
 
 import sys
 from DataPoint import DataPoint
+wfile = open("map3.txt","w+")
 
 prevKey = None
 count = 0
@@ -44,7 +45,8 @@ for line in sys.stdin:
 		tempSum = dataPoints.temp
 		prevKey = kCentroid
 		
-		
+avgYear = yearSum / count
+avgTemp = tempSum / count		
 print ("1\t"+str(avgYear)+","+str(avgTemp))
 """
 print("Year Sum: " + str(yearSum) + "\t\tAvg Year: " + str(avgYear))
