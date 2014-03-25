@@ -1,14 +1,20 @@
 #! /usr/bin/env bash
 
-# Base folder in HDFS
+# Configuration variables
 BASEFOLDER=/tmp/pmaxT
+DATAPOINTSFILE=dataPoints.txt
 
-rm kCentroids_*
-rm canopyCenters.txt
-rm canopyAssign.txt
+# Generated variables
+DATASET=$BASEFOLDER/input/$DATAPOINTSFILE
 
-hadoop dfs -rmr $BASEFOLDER/output*
-# 
+CANOPYCENTERFOLDER=$BASEFOLDER/output1
+CANOPYCENTERFILE=CANOPYCENTERFOLDER/part-00000
+
+CANOPYASSIGNFOLDER=$BASEFOLDER/output2
+CANOPYASSIGNFILE=$CANOPYASSIGNFOLDER/part-00000
+
+hadoop dfs -rmr $BASEFOLDER/output2
+
 COUNTER=0
 
 step3(){
@@ -18,25 +24,25 @@ step3(){
 }
 
 # Stage 1
-hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-*.jar \
--input $BASEFOLDER/input/dataPoints.txt \
--output $BASEFOLDER/output1 \
--file DataPoint.py \
--file mapperStg1.py \
--file reducerStg1.py \
--mapper mapperStg1.py \
--reducer reducerStg1.py
-
-# # Stage 2
 # hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-*.jar \
-# -input $BASEFOLDER/input/dataPoints.txt \
-# -output $BASEFOLDER/output2 \
+# -input $DATASET \
+# -output $CANOPYCENTERFOLDER \
 # -file DataPoint.py \
-# -file mapperStg2.py \
-# -file reducerStg2.py \
-# -mapper "mapperStg2.py $BASEFOLDER/output1/part-00000" \
-# -reducer "reducerStg2.py"
-cat dataPoints.txt | ./mapperStg2.py | sort | ./reducerStg2.py > canopyAssign.txt
+# -file mapperStg1.py \
+# -file reducerStg1.py \
+# -mapper mapperStg1.py \
+# -reducer reducerStg1.py
+
+# Stage 2
+hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-*.jar \
+-input $DATASET \
+-output $CANOPYASSIGNFOLDER \
+-file DataPoint.py \
+-file mapperStg2.py \
+-file reducerStg2.py \
+-mapper "mapperStg2.py $CANOPYCENTERFILE" \
+-reducer reducerStg2.py
+#cat dataPoints.txt | ./mapperStg2.py | sort | ./reducerStg2.py > canopyAssign.txt
 
 # # Stage 3
 # step3 kCentroids.txt

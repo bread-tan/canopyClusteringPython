@@ -2,44 +2,29 @@
 
 import sys
 import DataPoint
+import subprocess
 
+# Check for sufficient arguments
 if len(sys.argv) < 2:
 	print("ERROR: Insufficient arguments")
 	sys.exit(-1)
 
-canopyCentersFile = open(sys.argv[1],"r")
+# List to hold canopy centers
 canopyCenters = []
-canopys = []
-#DataPoints = []
 
-#taking data from the std input
-
-
-for line in canopyCentersFile:
+# Read canopy center file
+cat = subprocess.Popen(["hadoop", "fs", "-cat", sys.argv[1]], stdout=subprocess.PIPE)
+for line in cat.stdout:
+	if line.find("Warning:") == 0:
+	 	continue
 	(key,value) = line.split("\t")
 	dp = DataPoint.DataPoint(value.strip())
 	canopyCenters.append(dp)
-#canopyCenters.append(dp)
 
-#for centroid in canopyCenters:
-#	wfile.write(centroid.toString() + "\n")
-#wfile.write(centroid.toString())
-
+# Assign points to canopies
 for line in sys.stdin:
-	
 	dp = DataPoint.DataPoint(line.strip())
-# 	#DataPoints.append(dp)
-# 	#DataPoints.append(dp)
-
-# """
-# for dp in DataPoints:
-# 	print(dp.toString())
-# for centroid in canopyCenters:
-# 	print(centroid.toString())
-# """
-
 	insert = True
-#	for dataPoint in DataPoints: 
  	for canopyCenter in canopyCenters:	
  		if dp.checkT1(canopyCenter):
  			print(canopyCenter.toString() + "\t" + dp.toString())
