@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import sys
+from pydoop import hdfs
 from DataPoint import DataPoint
 
 import sys
@@ -9,7 +10,7 @@ if len(sys.argv) < 2:
 	print("ERROR: Insufficent arguments")
 	sys.exit(-1)
 
-file = open(sys.argv[1],"r")
+file = hdfs.open(sys.argv[1])
 
 kCentroids = []
 

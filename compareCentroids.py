@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import sys
+from pydoop import hdfs
 from DataPoint import DataPoint
 
 #print "Start"
@@ -12,8 +13,8 @@ if len(sys.argv)<3:
 	print "Error: Insufficient Arguments"
 	sys.exit(-1)
 
-oldCentroidsFile = open(sys.argv[1],"r")
-newCentroidsFile = open(sys.argv[2],"r")
+oldCentroidsFile = hdfs.open(sys.argv[1])
+newCentroidsFile = hdfs.open(sys.argv[2])
 
 oldCentroids = []
 newCentroids = []

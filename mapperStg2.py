@@ -2,7 +2,7 @@
 
 import sys
 import DataPoint
-import subprocess
+from pydoop import hdfs
 
 # Check for sufficient arguments
 if len(sys.argv) < 2:
@@ -13,8 +13,8 @@ if len(sys.argv) < 2:
 canopyCenters = []
 
 # Read canopy center file
-cat = subprocess.Popen(["hadoop", "fs", "-cat", sys.argv[1]], stdout=subprocess.PIPE)
-for line in cat.stdout:
+file = hdfs.open(sys.argv[1])
+for line in file:
 	if line.find("Warning:") == 0:
 	 	continue
 	(key,value) = line.split("\t")
@@ -25,6 +25,6 @@ for line in cat.stdout:
 for line in sys.stdin:
 	dp = DataPoint.DataPoint(line.strip())
 	insert = True
- 	for canopyCenter in canopyCenters:	
+ 	for canopyCenter in canopyCenters:
  		if dp.checkT1(canopyCenter):
  			print(canopyCenter.toString() + "\t" + dp.toString())

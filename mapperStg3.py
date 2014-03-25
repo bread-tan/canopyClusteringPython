@@ -1,15 +1,15 @@
 #! /usr/bin/env python
 
 import sys
-import collections
+from pydoop import hdfs
 from DataPoint import DataPoint
 
 if len(sys.argv) < 3:
 	print("ERROR: Insufficient arguments")
 	sys.exit(-1)
 
-canopyCentersFile= open(sys.argv[1],"r")
-kCentroidsFile  = open(sys.argv[2],"r")
+canopyCentersFile= hdfs.open(sys.argv[1])
+kCentroidsFile  = hdfs.open(sys.argv[2])
 
 
 kCentroids = []
